@@ -1,3 +1,3 @@
 import {MiComponente} from "./mi_componente.js"
 
-document.querySelector('DOMContentLoaded',()=>{})
+document.querySelector('DOMContentLoaded',new MiComponente())

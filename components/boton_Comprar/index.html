@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="btn_comprar.js" type="module"></script>
+    <script src="bootstrap.js" type="module"></script>
     <title>Creando componentes</title>
-    
+
 </head>
+
 <body>
     <header>
         <h1>Creando Componentes</h1>
     </header>
-    <boton-comprar></boton-comprar>
+    <boton-comprar id="comprar"><!-- Cuando no hay nada dentro del objeto, cog el texto por defecto del stolt y el botton (porque está dentro del objeto) -->
+    </boton-comprar>
+    <boton-comprar id="ahora">
+            <p slot="slot1">Ahora</p> <!-- Conforme vas dando valor al slot, te lo muestra -->
+    </boton-comprar>
+    <boton-comprar id="reservar">
+            <p slot="slot1">Reserva</p>
+    </boton-comprar>
     <div>
-        <button>Desconectar</button>
+        <button>Conectar</button>
     </div>
 </body>
+
 </html>

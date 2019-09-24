@@ -19,10 +19,15 @@ export class MiComponente extends HTMLElement {
     <div>
  <h1>Ejemplo de Componente</h1>
  <p>Esto es un componente</p>
+
  </div>
 `
+
 /* Tienes que poner algo de cógido de HTML para que lo renderice, sino no pinta nada. */
     }
+
+
+
     constructor() {
         super()
         // Creo un nuevo objeto para registrar un componente, generando un nuevo prototipo

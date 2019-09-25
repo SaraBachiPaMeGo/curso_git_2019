@@ -1,0 +1,47 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="app-user">
+  <template>
+    <style>
+      :host {
+        /* Es el propio componente. Referencia a sí mismo, el componente entero */
+        display: block;
+        background-color: bisque;
+        margin: 1rem;
+        padding: 1rem;
+        border: 2px solid rebeccapurple;
+      }
+
+    </style>
+    <h2>Usuario</h2>
+    <p>Hecho con Polymer</p>
+    <address>&copy;[[author]] -- [[fecha]]</address>
+  </template>
+
+  <script>
+    /**
+     * `app-user`
+     * Prueba con polymer
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class AppUser extends Polymer.Element { /* Extends en vez de HTML porque lo hemos enlazado anteriormente. (Te viene dado "Polymer" porque nos lo hemos descargado, en polymer-components hay un link y eso es lo que nos permite que hagamos el extends). */
+      constructor() {
+        super()
+      }
+
+      onClick(){
+      }
+
+      static get is() { return 'app-user'; }
+      static get properties() {
+        return {
+        };
+      }
+    }
+    console.log(AppUser.properties) /* Properties es el 'objeto' que contiene las propiedades que son los objetos. */
+    window.customElements.define(AppUser.is, AppUser);
+  </script>
+</dom-module>

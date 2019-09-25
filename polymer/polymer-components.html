@@ -1,0 +1,100 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="./bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="./bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="./bower_components/iron-icons/social-icons.html">
+
+<dom-module id="polymer-components">
+  <template>
+    <style>
+      :host {
+        /* Es el propio componente. Referencia a sí mismo, el componente entero */
+        display: block;
+        background-color: bisque;
+        margin: 1rem;
+        padding: 1rem;
+        border: 2px solid rebeccapurple;
+      }
+
+      iron-icon {
+        --iron-icon-fill-color: red;
+        --iron-icon-stroke-color: rgb(139, 4, 4);
+      }
+      :host([pressed]) iron-icon{
+        fill: tomato;
+      } /* Si tienes el atributo pressed haz x */
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+    <!-- con los dos corchetes accedemos a una variable x, y lo insertamos directamente en el HTML (gracias a ger properties() que devuelve un valor). Es un proceso de interpolación directamente sobre la plantilla de HTML  -->
+    <p>
+      <iron-icon icon="[[icono]]" on-click="onClick"></iron-icon>
+    </p>
+    <p>[[mensaje]]
+      <iron-icon icon="social:mood"></iron-icon>
+    </p>
+    
+
+    <p>Hecho con Polymer</p>
+    <address>&copy;[[author]] -- [[fecha]]</address>
+  </template>
+
+  <script>
+    /**
+     * `polymer-components`
+     * Prueba con polymer
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PolymerComponents extends Polymer.Element { /* Extends en vez de HTML porque lo hemos enlazado anteriormente. (Te viene dado "Polymer" porque nos lo hemos descargado, en polymer-components hay un link y eso es lo que nos permite que hagamos el extends). */
+      constructor() {
+        super()
+        this.fecha = new Date()
+        this.pressed=false
+      }
+
+      onClick(){
+        this.pressed= !this.pressed
+        if (this.pressed) {
+          this.mensaje='Encendido'
+        } else {
+          this.mensaje='Apagado'
+        }
+      }
+
+      static get is() { return 'polymer-components'; }
+      static get properties() {
+        return {
+          author: {
+            type: String,
+            value: 'Sara Bachiller Parra'
+          }, /* Esta propiedad se puede invocar poniendo un addres (mirar arriba) */ /* Las propiedades se declaran como objetos */
+          prop1: {
+            type: String,
+            value: 'polymer-components'
+          },
+          fecha: { /* Coge la propiedad del this.fecha */
+            type: String,
+            value: ''
+          },
+          icono: {
+            type: String,
+            value: 'favorite'
+          },
+          pressed: {
+            type: Boolean,
+            notify: true,
+            reflectToAttribute: true,
+            value: false
+          },
+          mensaje: {
+            type: String,
+            value: 'Apagado'
+          }
+        };
+      }
+    }
+    console.log(PolymerComponents.properties) /* Properties es el 'objeto' que contiene las propiedades que son los objetos. */
+    window.customElements.define(PolymerComponents.is, PolymerComponents);
+  </script>
+</dom-module>
